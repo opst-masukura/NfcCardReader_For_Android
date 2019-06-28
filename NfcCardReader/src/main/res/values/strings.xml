@@ -1,0 +1,38 @@
+<resources>
+	<string name="app_name">NFC Card Reader</string>
+	<string name="view_name_scan_confirm">確認</string>
+
+	<!-- スキャン画面 -->
+	<string name="label_start_scan">カードをかざしてください</string>
+
+	<!-- スキャン結果確認画面 -->
+	<string name="label_tag_id">タグID</string>
+	<string name="label_card_id">カード番号</string>
+	<string name="message_card_id">カード番号は入館カードの角に記入してある番号がカード番号です。\nカード番号がカードIDと異なっている場合、カード番号を入力してください。</string>
+	<string name="label_employee_id">社員番号</string>
+	<string name="hint_employee_id">社員番号を入力してください</string>
+	<string name="label_employee_name">社員氏名</string>
+	<string name="hint_employee_name">氏名を入力してください</string>
+
+	<!-- メニュー -->
+	<string name="menu_export_tsv">タブ区切り(TSV)で出力</string>
+	<string name="menu_export_csv">カンマ区切り(CSV)で出力</string>
+	<string name="menu_export_setting">出力ファイル設定</string>
+	<string name="menu_import_file">ファイル読み込み</string>
+
+	<!-- ファイル出力関連 -->
+	<string name="message_no_record_to_output">データが登録されていません</string>
+	<string name="message_file_export_success">ファイルを作成しました</string>
+	<string name="message_file_export_failed">ファイルの作成に失敗しました</string>
+
+	<!-- 設定画面 -->
+	<string name="label_line_feed">改行コード</string>
+	<string name="label_charset">文字コード</string>
+
+	<!-- ファイル読み込み画面 -->
+	<string name="root_path">/</string>
+	<string name="label_no_file">ファイルがありません</string>
+
+	<string name="return_description">return root</string>
+	<string name="fie_type_description">file type</string>
+</resources>

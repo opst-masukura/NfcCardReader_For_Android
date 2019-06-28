@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+	<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+		<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/round_chevron_left_black_36"
+				android:id="@+id/btn_return_parent"
+				android:contentDescription="@string/return_description" android:background="@color/transparent"/>
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/current_directory_name"
+				android:text="@string/root_path"/>
+	</LinearLayout>
+
+	<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:id="@+id/text_no_file"
+				android:gravity="center" android:text="@string/label_no_file" android:textSize="24sp"
+				android:visibility="gone"/>
+		<android.support.v7.widget.RecyclerView
+				android:id="@+id/directory_list"
+				android:name="jp.co.massu_p.nfccardreader.fileimport.fileListFragment"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginLeft="8dp"
+				android:layout_marginRight="8dp"
+				app:layoutManager="LinearLayoutManager"
+				tools:context=".fileimport.FileListFragment"
+				tools:listitem="@layout/fragment_filelist">
+		</android.support.v7.widget.RecyclerView>
+	</FrameLayout>
+</LinearLayout>

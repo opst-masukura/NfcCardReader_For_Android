@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!-- SharedPreferences Name -->
+	<string name="pref_name_file_format">pref_name_file_format</string>
+
+	<!-- SharedPreferences Key -->
+	<string name="pref_key_charset">pref_key_charset</string>
+	<string name="pref_key_linefeed">pref_key_linefeed</string>
+</resources>
