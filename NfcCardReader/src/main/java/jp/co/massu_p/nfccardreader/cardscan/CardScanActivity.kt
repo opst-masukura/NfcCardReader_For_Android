@@ -166,7 +166,7 @@ class CardScanActivity : AppCompatActivity(), ScanViewFragment.OnFragmentInterac
 	override fun onNewIntent(intent: Intent?) {
 		intent?.let {
 			val tag = it.getParcelableExtra(NfcAdapter.EXTRA_TAG) as Tag
-			Log.i(TAG, "Tag:${tag.getTagId()}")
+			Log.i(TAG, "${tag} ID:${tag.getTagId()}]")
 			startActivity(ScanConfirmActivity.intent(this, tag))
 		}
 	}
