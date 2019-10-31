@@ -14,7 +14,7 @@ import android.nfc.tech.NfcA
 import android.nfc.tech.NfcB
 import android.nfc.tech.NfcF
 import android.nfc.tech.NfcV
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -30,7 +30,6 @@ import jp.co.massu_p.nfccardreader.fileimport.FileImportActivity
 import jp.co.massu_p.nfccardreader.scanconfirm.ScanConfirmActivity
 import jp.co.massu_p.nfccardreader.setting.SettingActivity
 import jp.co.massu_p.nfccardreader.utils.Extensions.getTagId
-import jp.co.massu_p.nfccardreader.utils.Extensions.toString
 
 
 /**
@@ -134,10 +133,11 @@ class CardScanActivity : AppCompatActivity(), ScanViewFragment.OnFragmentInterac
 	override fun onResume() {
 		super.onResume()
 
-		val intent = Intent(applicationContext, this::class.java)
 		// 他のアプリを開かせないようにする対応
+		val intent = Intent(applicationContext, this::class.java)
+		intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
 		val nfcPendingIntent =
-			PendingIntent.getActivity(applicationContext, 0, intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0)
+			PendingIntent.getActivity(applicationContext, 0, intent, 0)
 
 		// NFC読み取りのためのIntentFilter
 		val techDetectedFilter = IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED)
@@ -164,12 +164,11 @@ class CardScanActivity : AppCompatActivity(), ScanViewFragment.OnFragmentInterac
 	}
 
 	override fun onNewIntent(intent: Intent?) {
-		if (null == intent) return
-
-		val tag: Tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
-		Log.i(TAG, "Tag:${tag.getTagId()}")
-
-		startActivity(ScanConfirmActivity.intent(this, tag))
+		intent?.let {
+			val tag = it.getParcelableExtra(NfcAdapter.EXTRA_TAG) as Tag
+			Log.i(TAG, "${tag} ID:${tag.getTagId()}]")
+			startActivity(ScanConfirmActivity.intent(this, tag))
+		}
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu?): Boolean {

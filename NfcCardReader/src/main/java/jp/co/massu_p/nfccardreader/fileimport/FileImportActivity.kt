@@ -4,7 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import jp.co.massu_p.nfccardreader.R
@@ -59,15 +59,13 @@ class FileImportActivity : AppCompatActivity(), FileListFragment.onClickItemList
 	}
 
 	override fun onItemClick(file: File) {
-		if (file.equals(currentFile.parentFile)) {
+		if (file == currentFile.parentFile) {
 			return
 		}
 		if (file.isDirectory) {
 			val transaction = supportFragmentManager.beginTransaction()
 			transaction.replace(R.id.view_container, FileListFragment.newInstance(file))
 			transaction.commit()
-		} else {
-
 		}
 	}
 }
