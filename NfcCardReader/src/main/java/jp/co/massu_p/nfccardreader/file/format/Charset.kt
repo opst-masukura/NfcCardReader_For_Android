@@ -1,106 +1,55 @@
 package jp.co.massu_p.nfccardreader.file.format
 
+import android.content.Context
+import jp.co.massu_p.nfccardreader.R
+
 /**
  * 文字コードの定義
  */
-class Charset() {
+enum class Charset {
 
-	private val charset_UTF8 = "UTF-8"
-	private val charset_SJIS = "windows-31j"
+	UTF8 {
+		override val code: String
+			get() = "UTF-8"
+		override val dispName: String
+			get() = "UTF-8"
+	},
+	SJIS {
+		override val code: String
+			get() = "windows-31j"
+		override val dispName: String
+			get() = "Shift-JIS"
+	};
 
-	private val dispName_UTF8 = "UTF-8"
-	private val dispName_SJIS = "Shift-JIS"
-
-	lateinit var type: TYPE
-
-	constructor(type: TYPE) : this() {
-		this.type = type
-	}
-
-	constructor(name: String?) : this() {
-		if (name.isNullOrEmpty()) {
-			this.type = TYPE.SJIS
-			return
-		}
-		when (name) {
-			charset_UTF8 -> {
-				this.type = TYPE.UTF8
-			}
-			charset_SJIS -> {
-				this.type = TYPE.SJIS
-			}
-			dispName_UTF8 -> {
-				this.type = TYPE.UTF8
-			}
-			dispName_SJIS -> {
-				this.type = TYPE.SJIS
-			}
-			TYPE.UTF8.toString() -> {
-				this.type = TYPE.UTF8
-			}
-			TYPE.SJIS.toString() -> {
-				this.type = TYPE.SJIS
-			}
-			else -> {
-				this.type = TYPE.SJIS
-			}
-		}
-	}
+	abstract val code: String
+	abstract val dispName: String
 
 	companion object {
-		fun values(): ArrayList<Charset> {
-			val list = arrayListOf<Charset>()
-			for (value in TYPE.values()) {
-				list.add(Charset(value))
+		val default = SJIS
+		private const val pref_key = "pref_key_charset"
+
+		fun getCurrent(context: Context) : Charset {
+			val pref = context.getSharedPreferences(context.getString(R.string.pref_name_file_format), Context.MODE_PRIVATE)
+			val name = pref.getString(pref_key, SJIS.toString())
+			for (value in values()) {
+				if (value.toString() == name) {
+					return value
+				}
 			}
-			return list
+			return default
 		}
 
-		fun displayNames(): ArrayList<String> {
+		fun setCurrent(context: Context, value: Charset) {
+			val pref = context.getSharedPreferences(context.getString(R.string.pref_name_file_format), Context.MODE_PRIVATE)
+			pref.edit().putString(pref_key, value.toString()).apply()
+		}
+
+		fun getDisplayNames(): ArrayList<String> {
 			val array = arrayListOf<String>()
 			for (value in values()) {
-				array.add(value.getDisplayName())
+				array.add(value.dispName)
 			}
 			return array
 		}
-	}
-
-	enum class TYPE {
-		UTF8, SJIS;
-	}
-
-	/**
-	 * 文字コードを取得
-	 */
-	fun getCode(): String {
-		return when (type) {
-			TYPE.UTF8 -> {
-				charset_UTF8
-			}
-			TYPE.SJIS -> {
-				charset_SJIS
-			}
-		}
-	}
-
-	/**
-	 * 表示用ラベルを取得
-	 */
-	fun getDisplayName(): String {
-		return when (type) {
-			TYPE.UTF8 -> {
-				dispName_UTF8
-			}
-			TYPE.SJIS -> {
-				dispName_SJIS
-			}
-		}
-	}
-
-	/**
-	 * Index番号を取得
-	 */
-	fun ordinal(): Int {
-		return type.ordinal
 	}
 }

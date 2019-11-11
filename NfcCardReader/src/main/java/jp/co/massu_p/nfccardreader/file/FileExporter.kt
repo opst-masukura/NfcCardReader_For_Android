@@ -81,8 +81,8 @@ class FileExporter {
 	fun exportFile(
 		recordList: List<DbRecord>,
 		exportType: ExportType,
-		charset: Charset = Charset(Charset.TYPE.SJIS),
-		lineFeed: LineFeed = LineFeed(LineFeed.TYPE.CRLF),
+		charset: Charset = Charset.default,
+		lineFeed: LineFeed = LineFeed.default,
 		fileName: String = "list"
 	): Boolean {
 		val textBuilder = StringBuilder()
@@ -116,14 +116,14 @@ class FileExporter {
 				if (record.hasNext()) {
 					textBuilder.append(exportType.getSeparator())
 				} else {
-					textBuilder.append(lineFeed.getCode())
+					textBuilder.append(lineFeed.code)
 				}
 			}
 		}
 
 		try {
 			FileOutputStream(file).use { fileOutputStream ->
-				OutputStreamWriter(fileOutputStream, charset.getCode()).use { outputStreamWriter ->
+				OutputStreamWriter(fileOutputStream, charset.code).use { outputStreamWriter ->
 					BufferedWriter(outputStreamWriter).use { bw ->
 						bw.write(textBuilder.toString())
 						bw.flush()

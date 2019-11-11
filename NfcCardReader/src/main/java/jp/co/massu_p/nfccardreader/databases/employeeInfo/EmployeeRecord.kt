@@ -6,6 +6,7 @@ import jp.co.massu_p.nfccardreader.databases.DbColumn
 import jp.co.massu_p.nfccardreader.databases.DbRecord
 import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
 /**
  * 社員情報レコードの定義
@@ -70,14 +71,14 @@ class EmployeeRecord() : DbRecord(), Parcelable {
 	@IgnoredOnParcel
 	var cardId: String = ""
 		set(value) {
-			field = value.toUpperCase()
+			field = value.toUpperCase(Locale.ROOT)
 			updateColumn(COLUMN.CARD_ID.columnName, field)
 		}
 
 	@IgnoredOnParcel
 	var employeeId: String = ""
 		set(value) {
-			field = value.toLowerCase()
+			field = value.toLowerCase(Locale.ROOT)
 			updateColumn(COLUMN.EMPLOYEE_ID.columnName, field)
 		}
 

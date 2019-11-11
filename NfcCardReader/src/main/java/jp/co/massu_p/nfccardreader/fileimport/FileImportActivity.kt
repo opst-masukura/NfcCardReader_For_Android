@@ -10,7 +10,7 @@ import android.os.Environment
 import jp.co.massu_p.nfccardreader.R
 import java.io.File
 
-class FileImportActivity : AppCompatActivity(), FileListFragment.onClickItemListener {
+class FileImportActivity : AppCompatActivity(), FileListFragment.OnClickItemListener {
 
 	companion object {
 		fun intent(context: Context): Intent =

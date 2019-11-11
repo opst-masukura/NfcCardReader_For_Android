@@ -22,7 +22,6 @@
 				android:ems="10"
 				android:id="@+id/text_tag_id"
 				android:hint="@string/label_tag_id"
-				android:autofillHints=""
 				android:enabled="false"/>
 		<TextView
 				android:text="@string/label_card_id"
@@ -36,7 +35,6 @@
 				android:ems="10"
 				android:id="@+id/text_card_id"
 				android:hint="@string/label_card_id"
-				android:autofillHints=""
 				android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 				android:inputType="textEmailAddress"/>
 		<TextView
@@ -64,8 +62,7 @@
 				android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 				android:ems="10"
 				android:id="@+id/text_employee_id"
-				android:hint="@string/hint_employee_id"
-				android:autofillHints="@string/hint_employee_id"/>
+				android:hint="@string/hint_employee_id"/>
 		<TextView
 				android:text="@string/label_employee_name"
 				android:layout_width="match_parent"
@@ -78,8 +75,7 @@
 				android:ems="10"
 				android:id="@+id/text_employee_name"
 				android:inputType="textPersonName"
-				android:hint="@string/hint_employee_name"
-				android:autofillHints="@string/hint_employee_name"/>
+				android:hint="@string/hint_employee_name"/>
 		<Button
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
