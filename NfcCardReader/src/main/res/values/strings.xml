@@ -2,6 +2,14 @@
 	<string name="app_name">NFC Card Reader</string>
 	<string name="view_name_scan_confirm">確認</string>
 
+	<!-- トップ画面 -->
+	<string name="button_menu_start_event">イベントの開始</string>
+	<string name="button_menu_event_management">イベント管理</string>
+	<string name="button_menu_user_management">ユーザー管理</string>
+
+	<!-- イベント一覧画面 -->
+	<string name="label_choose_event">開始するイベントを選択してください</string>
+
 	<!-- スキャン画面 -->
 	<string name="label_start_scan">カードをかざしてください</string>
 
@@ -35,4 +43,7 @@
 
 	<string name="return_description">return root</string>
 	<string name="fie_type_description">file type</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

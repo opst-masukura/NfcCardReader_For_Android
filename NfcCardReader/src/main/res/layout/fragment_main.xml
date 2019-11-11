@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".mainview.MainFragment">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/top_area"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toTopOf="@id/bottom_area"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+		<Button
+				android:id="@+id/event_start_card"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="135dp"
+				android:layout_marginEnd="154dp"
+				android:text="@string/button_menu_start_event"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/bottom_area"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/top_area">
+
+		<LinearLayout
+				android:id="@+id/event_area"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:orientation="vertical"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@id/user_area"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+			<Button
+					android:id="@+id/button4"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="Button" />
+
+			<Button
+					android:id="@+id/event_management_card"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content" />
+		</LinearLayout>
+
+		<LinearLayout
+				android:id="@+id/user_area"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:orientation="vertical"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/event_area"
+				app:layout_constraintTop_toTopOf="parent">
+
+			<Button
+					android:id="@+id/button5"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="Button" />
+
+			<Button
+					android:id="@+id/user_management_card"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content" />
+		</LinearLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
