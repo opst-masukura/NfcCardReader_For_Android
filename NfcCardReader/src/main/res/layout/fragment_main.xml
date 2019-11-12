@@ -15,19 +15,37 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent">
 
-		<Button
-				android:id="@+id/event_start_card"
+		<LinearLayout
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="135dp"
-				android:layout_marginEnd="154dp"
-				android:text="@string/button_menu_start_event"
+				android:orientation="vertical"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
+				app:layout_constraintTop_toTopOf="parent">
+
+			<Button
+					android:id="@+id/btn_event_start"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/button_menu_start_event" />
+
+			<Button
+					android:id="@+id/btn_scan_start"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/button_menu_start_scan" />
+		</LinearLayout>
+
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<View
+			android:id="@+id/divider4"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="?android:attr/listDivider"
+			app:layout_constraintTop_toBottomOf="@+id/top_area" />
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 			android:id="@+id/bottom_area"
@@ -41,45 +59,73 @@
 		<LinearLayout
 				android:id="@+id/event_area"
 				android:layout_width="0dp"
-				android:layout_height="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="8dp"
+				android:background="@drawable/shape_button_area_background"
 				android:orientation="vertical"
+				android:padding="16dp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toStartOf="@id/user_area"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent">
 
-			<Button
-					android:id="@+id/button4"
+			<TextView
+					android:id="@+id/textView"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:text="Button" />
+					android:text="@string/button_menu_event_management"
+					android:textAlignment="center"
+					android:textSize="18sp"
+					android:textStyle="bold" />
 
 			<Button
-					android:id="@+id/event_management_card"
+					android:id="@+id/btn_event_create"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content" />
+					android:layout_height="wrap_content"
+					android:text="@string/button_menu_event_create" />
+
+			<Button
+					android:id="@+id/btn_event_edit"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/button_menu_event_edit" />
 		</LinearLayout>
 
 		<LinearLayout
 				android:id="@+id/user_area"
 				android:layout_width="0dp"
-				android:layout_height="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="8dp"
+				android:layout_marginEnd="16dp"
+				android:background="@drawable/shape_button_area_background"
 				android:orientation="vertical"
+				android:padding="16dp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toEndOf="@id/event_area"
 				app:layout_constraintTop_toTopOf="parent">
 
-			<Button
-					android:id="@+id/button5"
+			<TextView
+					android:id="@+id/textView2"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:text="Button" />
+					android:text="@string/button_menu_user_management"
+					android:textAlignment="center"
+					android:textSize="18sp"
+					android:textStyle="bold" />
 
 			<Button
-					android:id="@+id/user_management_card"
+					android:id="@+id/btn_user_master_read"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content" />
+					android:layout_height="wrap_content"
+					android:text="@string/button_menu_user_master_read" />
+
+			<Button
+					android:id="@+id/btn_user_master_edit"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/button_menu_user_master_confirm" />
 		</LinearLayout>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
