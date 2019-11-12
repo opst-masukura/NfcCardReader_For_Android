@@ -33,8 +33,7 @@
 						android:ems="10"
 						android:id="@+id/text_tag_id"
 						android:enabled="false"
-						android:hint="@string/label_tag_id"
-						android:autofillHints=""/>
+						android:hint="@string/label_tag_id"/>
 			</LinearLayout>
 			<LinearLayout
 					android:orientation="vertical"
@@ -55,8 +54,7 @@
 						android:id="@+id/text_card_id"
 						android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 						android:inputType="textEmailAddress"
-						android:hint="@string/label_card_id"
-						android:autofillHints=""/>
+						android:hint="@string/label_card_id"/>
 			</LinearLayout>
 		</LinearLayout>
 		<TextView
@@ -96,8 +94,7 @@
 						android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 						android:ems="10"
 						android:id="@+id/text_employee_id"
-						android:hint="@string/hint_employee_id"
-						android:autofillHints=""/>
+						android:hint="@string/hint_employee_id"/>
 			</LinearLayout>
 			<LinearLayout
 					android:orientation="vertical"
@@ -117,8 +114,7 @@
 						android:ems="10"
 						android:id="@+id/text_employee_name"
 						android:inputType="textPersonName"
-						android:hint="@string/hint_employee_name"
-						android:autofillHints=""/>
+						android:hint="@string/hint_employee_name"/>
 			</LinearLayout>
 		</LinearLayout>
 		<Button

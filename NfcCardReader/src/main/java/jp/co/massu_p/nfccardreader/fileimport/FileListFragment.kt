@@ -63,7 +63,7 @@ class FileListFragment : Fragment(), DirectoryListViewHolder.OnItemClickListener
 
 	override fun onAttach(context: Context) {
 		super.onAttach(context)
-		if (context is onClickItemListener) {
+		if (context is OnClickItemListener) {
 			listener = context
 		} else {
 			throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
@@ -79,9 +79,9 @@ class FileListFragment : Fragment(), DirectoryListViewHolder.OnItemClickListener
 		listener?.onItemClick(file)
 	}
 
-	private var listener: onClickItemListener? = null
+	private var listener: OnClickItemListener? = null
 
-	interface onClickItemListener {
+	interface OnClickItemListener {
 		fun onItemClick(file: File)
 	}
 

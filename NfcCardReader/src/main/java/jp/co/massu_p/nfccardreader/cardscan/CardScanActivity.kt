@@ -120,9 +120,7 @@ class CardScanActivity : AppCompatActivity(), ScanViewFragment.OnFragmentInterac
 	override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
 		when (requestCode) {
 			STORAGE_PERMISSION_REQUEST_CODE -> {
-				if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-					// 許可の場合。実装は後で。
-				} else {
+				if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
 					// 不許可の場合。実装は後で。
 				}
 			}
@@ -169,6 +167,7 @@ class CardScanActivity : AppCompatActivity(), ScanViewFragment.OnFragmentInterac
 			Log.i(TAG, "${tag} ID:${tag.getTagId()}]")
 			startActivity(ScanConfirmActivity.intent(this, tag))
 		}
+		super.onNewIntent(intent)
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -179,8 +178,8 @@ class CardScanActivity : AppCompatActivity(), ScanViewFragment.OnFragmentInterac
 	override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 		if (null == item) return super.onOptionsItemSelected(item)
 		val recordList = employeeDB.getAllRecords()
-		val charset = Charset(pref.getString(getString(R.string.pref_key_charset), ""))
-		val linefeed = LineFeed(pref.getString(getString(R.string.pref_key_linefeed), ""))
+		val charset = Charset.getCurrent(applicationContext)
+		val linefeed = LineFeed.getCurrent(applicationContext)
 
 		// 外部ストレージのアクセス許可がない場合、リクエストを送りたい
 		when (item.itemId) {
