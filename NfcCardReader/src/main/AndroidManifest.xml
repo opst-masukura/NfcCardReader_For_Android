@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="jp.co.massu_p.nfccardreader">
+		package="jp.co.massu_p.nfccardreader">
 
-	<uses-permission android:name="android.permission.NFC"/>
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.NFC" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 	<uses-feature
 			android:name="android.hardware.nfc"
-			android:required="true"/>
+			android:required="true" />
 
 	<application
 			android:allowBackup="false"
@@ -17,19 +17,17 @@
 			android:roundIcon="@mipmap/ic_launcher_round"
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme">
-		<activity android:name=".fileimport.FileImportActivity">
-		</activity>
-		<activity android:name=".setting.SettingActivity">
-		</activity>
-		<activity android:name=".scanconfirm.ScanConfirmActivity">
-		</activity>
-		<activity android:name=".cardscan.CardScanActivity">
+		<activity android:name=".mainview.MainActivity">
 			<intent-filter>
-				<action android:name="android.intent.action.MAIN"/>
+				<action android:name="android.intent.action.MAIN" />
 
-				<category android:name="android.intent.category.LAUNCHER"/>
+				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+		<activity android:name=".fileimport.FileImportActivity"></activity>
+		<activity android:name=".setting.SettingActivity"></activity>
+		<activity android:name=".scanconfirm.ScanConfirmActivity"></activity>
+		<activity android:name=".cardscan.CardScanActivity"></activity>
 	</application>
 
 </manifest>
