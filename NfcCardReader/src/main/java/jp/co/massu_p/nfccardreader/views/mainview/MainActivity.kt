@@ -1,4 +1,4 @@
-package jp.co.massu_p.nfccardreader.mainview
+package jp.co.massu_p.nfccardreader.views.mainview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

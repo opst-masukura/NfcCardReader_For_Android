@@ -1,4 +1,4 @@
-package jp.co.massu_p.nfccardreader.setting
+package jp.co.massu_p.nfccardreader.views.setting
 
 import android.content.Context
 import android.content.Intent

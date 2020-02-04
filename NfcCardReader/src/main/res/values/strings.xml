@@ -8,9 +8,9 @@
 	<string name="button_menu_event_management">イベント管理</string>
 	<string name="button_menu_event_create">イベント作成</string>
 	<string name="button_menu_event_edit">イベント編集</string>
-	<string name="button_menu_user_management">ユーザー管理</string>
-	<string name="button_menu_user_master_read">ユーザー一覧読み込み</string>
-	<string name="button_menu_user_master_confirm">ユーザー一覧編集</string>
+	<string name="button_menu_user_management">データ管理</string>
+	<string name="button_menu_user_master_read">マスターデータ読み込み</string>
+	<string name="button_menu_user_master_confirm">マスターデータ編集</string>
 	<string name="button_menu_user_edit">ユーザー検索</string>
 
 	<!-- イベント一覧画面 -->

@@ -1,4 +1,4 @@
-package jp.co.massu_p.nfccardreader.scanconfirm
+package jp.co.massu_p.nfccardreader.views.scanconfirm
 
 import android.content.Context
 import android.os.Bundle

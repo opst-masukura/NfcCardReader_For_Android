@@ -4,7 +4,7 @@
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		tools:context=".mainview.MainFragment">
+		tools:context=".views.mainview.MainFragment">
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 			android:id="@+id/top_area"
@@ -40,19 +40,13 @@
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 
-	<View
-			android:id="@+id/divider4"
-			android:layout_width="match_parent"
-			android:layout_height="1dp"
-			android:background="?android:attr/listDivider"
-			app:layout_constraintTop_toBottomOf="@+id/top_area" />
-
 	<androidx.constraintlayout.widget.ConstraintLayout
 			android:id="@+id/bottom_area"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="1.0"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/top_area">
 
@@ -61,12 +55,13 @@
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="16dp"
-				android:layout_marginEnd="8dp"
+				android:layout_marginEnd="16dp"
+				android:layout_marginBottom="16dp"
 				android:background="@drawable/shape_button_area_background"
 				android:orientation="vertical"
 				android:padding="16dp"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toStartOf="@id/user_area"
+				app:layout_constraintBottom_toTopOf="@+id/user_area"
+				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent">
 
@@ -96,15 +91,15 @@
 				android:id="@+id/user_area"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="8dp"
+				android:layout_marginStart="16dp"
 				android:layout_marginEnd="16dp"
+				android:layout_marginBottom="16dp"
 				android:background="@drawable/shape_button_area_background"
 				android:orientation="vertical"
 				android:padding="16dp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toEndOf="@id/event_area"
-				app:layout_constraintTop_toTopOf="parent">
+				app:layout_constraintStart_toStartOf="parent">
 
 			<TextView
 					android:id="@+id/textView2"

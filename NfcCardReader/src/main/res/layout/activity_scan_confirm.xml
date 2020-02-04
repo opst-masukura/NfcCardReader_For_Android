@@ -4,7 +4,7 @@
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		tools:context=".scanconfirm.ScanConfirmActivity">
+		tools:context=".views.scanconfirm.ScanConfirmActivity">
 
 	<FrameLayout
 			android:layout_width="match_parent"

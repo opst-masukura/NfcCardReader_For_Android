@@ -1,4 +1,4 @@
-package jp.co.massu_p.nfccardreader.mainview
+package jp.co.massu_p.nfccardreader.views.mainview
 
 
 import android.os.Bundle
@@ -10,22 +10,17 @@ import android.view.ViewGroup
 import jp.co.massu_p.nfccardreader.R
 
 /**
+ * A simple [Fragment] subclass.
  */
-class MainFragment : Fragment() {
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-	}
+class EventListFragment : Fragment() {
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View? {
-		return inflater.inflate(R.layout.fragment_main, container, false)
+		// Inflate the layout for this fragment
+		return inflater.inflate(R.layout.fragment_event_list, container, false)
 	}
 
-	companion object {
-		@JvmStatic
-		fun newInstance() = MainFragment()
-	}
+
 }

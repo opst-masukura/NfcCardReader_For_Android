@@ -17,7 +17,7 @@
 			android:roundIcon="@mipmap/ic_launcher_round"
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme">
-		<activity android:name=".mainview.MainActivity">
+		<activity android:name="jp.co.massu_p.nfccardreader.views.mainview.MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +25,9 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".fileimport.FileImportActivity"></activity>
-		<activity android:name=".setting.SettingActivity"></activity>
-		<activity android:name=".scanconfirm.ScanConfirmActivity"></activity>
-		<activity android:name=".cardscan.CardScanActivity"></activity>
+		<activity android:name="jp.co.massu_p.nfccardreader.views.setting.SettingActivity"></activity>
+		<activity android:name="jp.co.massu_p.nfccardreader.views.scanconfirm.ScanConfirmActivity"></activity>
+		<activity android:name="jp.co.massu_p.nfccardreader.views.cardscan.CardScanActivity"></activity>
 	</application>
 
 </manifest>

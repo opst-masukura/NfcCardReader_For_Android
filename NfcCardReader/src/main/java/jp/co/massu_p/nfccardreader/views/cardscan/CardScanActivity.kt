@@ -1,4 +1,4 @@
-package jp.co.massu_p.nfccardreader.cardscan
+package jp.co.massu_p.nfccardreader.views.cardscan
 
 import android.Manifest
 import android.app.PendingIntent
@@ -27,8 +27,8 @@ import jp.co.massu_p.nfccardreader.file.format.Charset
 import jp.co.massu_p.nfccardreader.file.format.ExportType
 import jp.co.massu_p.nfccardreader.file.format.LineFeed
 import jp.co.massu_p.nfccardreader.fileimport.FileImportActivity
-import jp.co.massu_p.nfccardreader.scanconfirm.ScanConfirmActivity
-import jp.co.massu_p.nfccardreader.setting.SettingActivity
+import jp.co.massu_p.nfccardreader.views.scanconfirm.ScanConfirmActivity
+import jp.co.massu_p.nfccardreader.views.setting.SettingActivity
 import jp.co.massu_p.nfccardreader.utils.Extensions.getTagId
 
 

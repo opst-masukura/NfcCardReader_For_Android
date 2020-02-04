@@ -1,4 +1,4 @@
-package jp.co.massu_p.nfccardreader.cardscan
+package jp.co.massu_p.nfccardreader.views.cardscan
 
 import android.content.Context
 import android.net.Uri
