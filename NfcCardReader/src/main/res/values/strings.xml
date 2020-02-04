@@ -50,6 +50,7 @@
 	<string name="return_description">return root</string>
 	<string name="fie_type_description">file type</string>
 
-	<!-- TODO: Remove or change this placeholder text -->
-	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<!-- ダイアログ -->
+	<string name="label_default_title">エラー</string>
+	<string name="label_default_message">エラーが発生しました</string>
 </resources>
