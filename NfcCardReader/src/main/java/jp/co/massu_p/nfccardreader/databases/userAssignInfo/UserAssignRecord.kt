@@ -31,10 +31,34 @@ class UserAssignRecord() : DbRecord(), Parcelable {
 
 	override fun initializer(): MutableList<DbColumn> {
 		val columnList = mutableListOf<DbColumn>()
-		columnList.add(DbColumn(COLUMN.TAG_ID.columnName, DbColumn.ValueType.TEXT, true, false, false))
-		columnList.add(DbColumn(COLUMN.CARD_ID.columnName, DbColumn.ValueType.TEXT, false, false, false))
-		columnList.add(DbColumn(COLUMN.USER_ID.columnName, DbColumn.ValueType.TEXT, false, false, false))
-		columnList.add(DbColumn(COLUMN.USER_NAME.columnName, DbColumn.ValueType.TEXT, false, false, false))
+		columnList.add(DbColumn(
+			COLUMN.TAG_ID.columnName,
+			DbColumn.ValueType.TEXT,
+			isPrimaryKey = true,
+			isNotNull = false,
+			isUnique = false
+		))
+		columnList.add(DbColumn(
+			COLUMN.CARD_ID.columnName,
+			DbColumn.ValueType.TEXT,
+			isPrimaryKey = false,
+			isNotNull = false,
+			isUnique = false
+		))
+		columnList.add(DbColumn(
+			COLUMN.USER_ID.columnName,
+			DbColumn.ValueType.TEXT,
+			isPrimaryKey = false,
+			isNotNull = false,
+			isUnique = false
+		))
+		columnList.add(DbColumn(
+			COLUMN.USER_NAME.columnName,
+			DbColumn.ValueType.TEXT,
+			isPrimaryKey = false,
+			isNotNull = false,
+			isUnique = false
+		))
 		return columnList
 	}
 

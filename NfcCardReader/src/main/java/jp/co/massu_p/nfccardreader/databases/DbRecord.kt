@@ -12,14 +12,14 @@ import java.lang.StringBuilder
  * 1. リストに登録した順番でレコードのカラムになる。
  *
  */
-abstract class DbRecord() {
+abstract class DbRecord {
 
 	protected val columnMap = mutableMapOf<String, DbColumn>()
 	private var iterator: MutableIterator<MutableMap.MutableEntry<String, DbColumn>>
 
 	init {
-		for (column in initializer()) {
-			columnMap.put(column.name, column)
+		for (column in this.initializer()) {
+			columnMap[column.name] = column
 		}
 		iterator = columnMap.iterator()
 	}

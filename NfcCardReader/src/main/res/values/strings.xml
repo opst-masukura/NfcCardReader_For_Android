@@ -23,10 +23,10 @@
 	<string name="label_tag_id">タグID</string>
 	<string name="label_card_id">カード番号</string>
 	<string name="message_card_id">カード番号は入館カードの角に記入してある番号がカード番号です。\nカード番号がカードIDと異なっている場合、カード番号を入力してください。</string>
-	<string name="label_employee_id">社員番号</string>
-	<string name="hint_employee_id">社員番号を入力してください</string>
-	<string name="label_employee_name">社員氏名</string>
-	<string name="hint_employee_name">氏名を入力してください</string>
+	<string name="label_user_id">社員番号</string>
+	<string name="hint_user_id">社員番号を入力してください</string>
+	<string name="label_user_name">社員氏名</string>
+	<string name="hint_user_name">氏名を入力してください</string>
 
 	<!-- メニュー -->
 	<string name="menu_export_tsv">タブ区切り(TSV)で出力</string>

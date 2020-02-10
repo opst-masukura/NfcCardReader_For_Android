@@ -31,7 +31,7 @@ class DirectoryListAdapter(
 
 		mainView.setOnClickListener { view ->
 			recyclerView?.let {
-				itemClickListener.onItemClick(itemList.get(it.getChildAdapterPosition(view)))
+				itemClickListener.onItemClick(itemList[it.getChildAdapterPosition(view)])
 			}
 		}
 
@@ -44,7 +44,7 @@ class DirectoryListAdapter(
 
 	override fun onBindViewHolder(holder: DirectoryListViewHolder, position: Int) {
 		holder.let {
-			val item = itemList.get(position)
+			val item = itemList[position]
 			if (item.isDirectory) {
 				it.itemImage.setImageResource(R.drawable.baseline_folder_open_black_48)
 			} else {

@@ -13,7 +13,7 @@ import jp.co.massu_p.nfccardreader.utils.Extensions.getTagId
  */
 class UserAssignDataModel(val context: Application) : AndroidViewModel(context) {
 
-	private val TAG = "UserAssignDataModel"
+	private val tag = "UserAssignDataModel"
 	private val userAssignDB: UserAssignDBAdapter = UserAssignDBAdapter(context)
 
 	/**
@@ -29,7 +29,7 @@ class UserAssignDataModel(val context: Application) : AndroidViewModel(context) 
 			employeeRecord.tagId = tag.getTagId()
 			employeeRecord.cardId = tag.getTagId()
 		} else {
-			employeeRecord = recordList.get(0) as UserAssignRecord
+			employeeRecord = recordList[0] as UserAssignRecord
 		}
 		return employeeRecord
 	}
@@ -42,10 +42,10 @@ class UserAssignDataModel(val context: Application) : AndroidViewModel(context) 
 	fun setRecord(record: UserAssignRecord) {
 		if (userAssignDB.isRecord(UserAssignRecord.COLUMN.TAG_ID.columnName, record.tagId)) {
 			userAssignDB.updateRecord(record)
-			Log.i(TAG, "update record.")
+			Log.i(tag, "update record.")
 		} else {
 			userAssignDB.addRecord(record)
-			Log.i(TAG, "Add record.")
+			Log.i(tag, "Add record.")
 		}
 	}
 }

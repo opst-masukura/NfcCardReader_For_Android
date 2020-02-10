@@ -5,7 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
+import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 
 import jp.co.massu_p.nfccardreader.R
@@ -36,6 +37,8 @@ import kotlinx.android.synthetic.main.fragment_confirm_view.*
  */
 class ConfirmViewFragment : Fragment() {
 
+	private val userAssignDataModel by viewModels<UserAssignDataModel>()
+
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
@@ -45,7 +48,6 @@ class ConfirmViewFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		val model = ViewModelProviders.of(this)[UserAssignDataModel::class.java]
 
 		arguments?.let {
 			val record = it.getParcelable<UserAssignRecord>(RECORD_EXTRA)
@@ -59,7 +61,7 @@ class ConfirmViewFragment : Fragment() {
 					record.cardId = text_card_id.text.toString()
 					record.userId = text_employee_id.text.toString()
 					record.userName = text_employee_name.text.toString()
-					model.setRecord(record)
+					userAssignDataModel.setRecord(record)
 					findNavController().popBackStack()
 				}
 			}
@@ -67,6 +69,9 @@ class ConfirmViewFragment : Fragment() {
 	}
 
 	companion object {
-		val RECORD_EXTRA = "RECORD_EXTRA"
+		private const val RECORD_EXTRA = "RECORD_EXTRA"
+		fun getBundle(userAssignRecord: UserAssignRecord) : Bundle {
+			return bundleOf(RECORD_EXTRA to userAssignRecord)
+		}
 	}
 }

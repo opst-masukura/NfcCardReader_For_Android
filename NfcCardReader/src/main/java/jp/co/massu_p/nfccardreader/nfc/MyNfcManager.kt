@@ -12,12 +12,12 @@ import android.nfc.tech.NfcV
 
 class MyNfcManager(activity: Activity) {
 
-	private val nfcAdapter: NfcAdapter
+	private val nfcAdapter: NfcAdapter = NfcAdapter.getDefaultAdapter(activity.applicationContext)
 
 	/**
 	 * 読み込むNFCタイプの定義
 	 */
-	private val NFC_TYPES = arrayOf(
+	private val nfcTypes = arrayOf(
 		arrayOf(NfcA::class.java.name),
 		arrayOf(NfcB::class.java.name),
 		arrayOf(NfcF::class.java.name),
@@ -25,7 +25,6 @@ class MyNfcManager(activity: Activity) {
 	)
 
 	init {
-		nfcAdapter = NfcAdapter.getDefaultAdapter(activity.applicationContext)
 
 		// 他のアプリを開かせないようにする対応
 		val intent = Intent(activity.applicationContext, activity::class.java)
@@ -46,7 +45,7 @@ class MyNfcManager(activity: Activity) {
 			activity,
 			nfcPendingIntent,
 			arrayOf(techDetectedFilter, ndefDetectedFilter, urlDetectedFilter),
-			NFC_TYPES
+			nfcTypes
 		)
 	}
 

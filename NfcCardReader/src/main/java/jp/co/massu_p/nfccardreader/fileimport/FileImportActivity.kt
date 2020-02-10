@@ -50,11 +50,6 @@ class FileImportActivity : AppCompatActivity(), FileImportFragment.OnClickItemLi
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 	}
 
-	override fun onResume() {
-		super.onResume()
-
-	}
-
 	override fun onItemClick(file: File) {
 		if (file == currentFile.parentFile) {
 			return

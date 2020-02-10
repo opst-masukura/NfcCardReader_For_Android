@@ -76,44 +76,44 @@ class DbColumn(
 					}
 				}
 				is Byte -> {
-					when (type) {
-						ValueType.INTEGER -> field = value as Long
-						ValueType.TEXT -> field = value.toString()
+					field = when (type) {
+						ValueType.INTEGER -> value as Long
+						ValueType.TEXT -> value.toString()
 						else -> throw IllegalArgumentException("Mismatch type ${value::class.java.simpleName} to INTEGER")
 					}
 				}
 				is Short -> {
-					when (type) {
-						ValueType.INTEGER -> field = value as Long
-						ValueType.TEXT -> field = value.toString()
+					field = when (type) {
+						ValueType.INTEGER -> value as Long
+						ValueType.TEXT -> value.toString()
 						else -> throw IllegalArgumentException("Mismatch type ${value::class.java.simpleName} to INTEGER")
 					}
 				}
 				is Int -> {
-					when (type) {
-						ValueType.INTEGER -> field = value as Long
-						ValueType.TEXT -> field = value.toString()
+					field = when (type) {
+						ValueType.INTEGER -> value as Long
+						ValueType.TEXT -> value.toString()
 						else -> throw IllegalArgumentException("Mismatch type ${value::class.java.simpleName} to INTEGER")
 					}
 				}
 				is Long -> {
-					when (type) {
-						ValueType.INTEGER -> field = value
-						ValueType.TEXT -> field = value.toString()
+					field = when (type) {
+						ValueType.INTEGER -> value
+						ValueType.TEXT -> value.toString()
 						else -> throw IllegalArgumentException("Mismatch type ${value::class.java.simpleName} to INTEGER")
 					}
 				}
 				is Float -> {
-					when (type) {
-						ValueType.REAL -> field = value as Double
-						ValueType.TEXT -> field = value.toString()
+					field = when (type) {
+						ValueType.REAL -> value as Double
+						ValueType.TEXT -> value.toString()
 						else -> throw IllegalArgumentException("Mismatch type ${value::class.java.simpleName} to REAL")
 					}
 				}
 				is Double -> {
-					when (type) {
-						ValueType.REAL -> field = value
-						ValueType.TEXT -> field = value.toString()
+					field = when (type) {
+						ValueType.REAL -> value
+						ValueType.TEXT -> value.toString()
 						else -> throw IllegalArgumentException("Mismatch type ${value::class.java.simpleName} to REAL")
 					}
 				}

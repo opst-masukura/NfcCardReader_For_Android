@@ -11,13 +11,13 @@ import java.lang.StringBuilder
  * @param version バージョン番号
  * @param record 実装したレコード
  */
-abstract class DbTable (val name: String, val version: Int, val record: DbRecord) {
+abstract class DbTable (val name: String, val version: Int, private val record: DbRecord) {
 
 	/**
 	 * create tableのSQL構文を生成する
 	 */
 	fun getCreateTableSql(): String {
-		Log.i(DbTable::class.java.simpleName, "create table -> $name");
+		Log.i(DbTable::class.java.simpleName, "create table -> $name")
 		val sqlBuilder = StringBuilder()
 		sqlBuilder.append("create table $name (${record.getCreateTableSql()});")
 		return sqlBuilder.toString()

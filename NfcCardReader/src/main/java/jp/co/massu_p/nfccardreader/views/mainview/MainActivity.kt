@@ -13,8 +13,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.core.os.bundleOf
-import androidx.lifecycle.ViewModelProviders
+import androidx.activity.viewModels
 import androidx.navigation.findNavController
 import jp.co.massu_p.nfccardreader.R
 import jp.co.massu_p.nfccardreader.databases.userAssignInfo.UserAssignDBAdapter
@@ -54,33 +53,31 @@ import jp.co.massu_p.nfccardreader.views.setting.SettingActivity
  */
 class MainActivity : AppCompatActivity() {
 
-	private val TAG = "CardScan"
-	private val STORAGE_PERMISSION_REQUEST_CODE = 1
+	private val tag = "CardScan"
+	private val storagePermissionRequestCode = 1
 
-	lateinit private var myNfcManager: MyNfcManager
-	lateinit private var userAssignDB: UserAssignDBAdapter
-	lateinit private var pref: SharedPreferences
-	lateinit private var userAssignDataModel: UserAssignDataModel
+	private lateinit var myNfcManager: MyNfcManager
+	private lateinit var userAssignDB: UserAssignDBAdapter
+	private lateinit var pref: SharedPreferences
+	private val userAssignDataModel by viewModels<UserAssignDataModel>()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
-
-		userAssignDataModel = ViewModelProviders.of(this)[UserAssignDataModel::class.java]
 
 		userAssignDB = UserAssignDBAdapter(applicationContext)
 		pref = getSharedPreferences(getString(R.string.pref_name_file_format), Context.MODE_PRIVATE)
 
 		if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 			requestPermissions(
-				arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), STORAGE_PERMISSION_REQUEST_CODE
+				arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), storagePermissionRequestCode
 			)
 		}
 	}
 
 	override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
 		when (requestCode) {
-			STORAGE_PERMISSION_REQUEST_CODE -> {
+			storagePermissionRequestCode -> {
 				if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
 					// 不許可の場合。実装は後で。
 				}
@@ -108,10 +105,10 @@ class MainActivity : AppCompatActivity() {
 			R.id.scanViewFragment -> {
 				intent?.let {
 					val tag = it.getParcelableExtra(NfcAdapter.EXTRA_TAG) as Tag
-					Log.i(TAG, "${tag} ID:${tag.getTagId()}]")
+					Log.i(this.tag, "$tag ID:${tag.getTagId()}]")
 
-					var userAssignRecord = userAssignDataModel.getRecord(tag)
-					val bundle = bundleOf(ConfirmViewFragment.RECORD_EXTRA to userAssignRecord)
+					val userAssignRecord = userAssignDataModel.getRecord(tag)
+					val bundle = ConfirmViewFragment.getBundle(userAssignRecord)
 					findNavController(R.id.main_fragment).navigate(R.id.toScanConfirm, bundle)
 				}
 			}

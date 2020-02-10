@@ -40,12 +40,12 @@ class FileImportFragment : Fragment(), DirectoryListViewHolder.OnItemClickListen
 		}
 
 		val directoryName = mainView.findViewById<TextView>(R.id.current_directory_name)
-		if (currentFile.path.equals(rootPath)) {
-			directoryName.setText("/")
+		if (currentFile.path == rootPath) {
+			directoryName.text = "/"
 		} else {
 			// FIXME パスが長すぎると後ろの方が見えなくなっちゃう
 			val path = currentFile.path.replace(rootPath, "")
-			directoryName.setText(path)
+			directoryName.text = path
 		}
 
 		val directoryList = mainView.findViewById(R.id.directory_list) as RecyclerView
@@ -66,7 +66,7 @@ class FileImportFragment : Fragment(), DirectoryListViewHolder.OnItemClickListen
 		if (context is OnClickItemListener) {
 			listener = context
 		} else {
-			throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+			throw RuntimeException("$context must implement OnFragmentInteractionListener")
 		}
 	}
 
@@ -86,7 +86,7 @@ class FileImportFragment : Fragment(), DirectoryListViewHolder.OnItemClickListen
 	}
 
 	companion object {
-		private val FILE_EXTRA = "FILE_EXTRA"
+		private const val FILE_EXTRA = "FILE_EXTRA"
 
 		@JvmStatic
 		fun newInstance(file: File) = FileImportFragment().apply {
