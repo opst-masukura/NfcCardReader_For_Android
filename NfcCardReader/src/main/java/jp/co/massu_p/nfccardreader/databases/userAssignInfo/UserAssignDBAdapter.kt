@@ -1,4 +1,4 @@
-package jp.co.massu_p.nfccardreader.databases.employeeInfo
+package jp.co.massu_p.nfccardreader.databases.userAssignInfo
 
 import android.content.Context
 import android.database.Cursor
@@ -8,16 +8,16 @@ import jp.co.massu_p.nfccardreader.databases.DbRecord
 import jp.co.massu_p.nfccardreader.utils.Extensions.getTagId
 
 /**
- * 社員情報テーブルを操作するクラス
+ * ユーザー割り当て情報テーブルを操作するクラス
  */
-class EmployeeDBAdapter(
+class UserAssignDBAdapter(
 	context: Context,
-	private val employeeTable: EmployeeTable = EmployeeTable(
-		EmployeeTable.DB_NAME,
-		EmployeeTable.VERSION,
-		EmployeeRecord()
+	private val userAssignTable: UserAssignTable = UserAssignTable(
+		UserAssignTable.DB_NAME,
+		UserAssignTable.VERSION,
+		UserAssignRecord()
 	)
-) : DbAdapter(context, employeeTable) {
+) : DbAdapter(context, userAssignTable) {
 
 	/**
 	 * Tagの情報がDBに存在しているか確認する
@@ -25,7 +25,7 @@ class EmployeeDBAdapter(
 	 * @param tag 確認するタグ
 	 */
 	fun isRecord(tag: Tag): Boolean {
-		return isRecord(EmployeeRecord.COLUMN.TAG_ID.columnName, tag.getTagId())
+		return isRecord(UserAssignRecord.COLUMN.TAG_ID.columnName, tag.getTagId())
 	}
 
 	/**
@@ -34,9 +34,9 @@ class EmployeeDBAdapter(
 	 * @param tag 取得するタグ情報
 	 */
 	fun getRecord(tag: Tag): List<DbRecord> {
-		val selectSql = "select * from ${employeeTable.name} where tagId = ? "
+		val selectSql = "select * from ${userAssignTable.name} where tagId = ? "
 		val cursor: Cursor = db.rawQuery(selectSql, arrayOf(tag.getTagId()))
-		val recordList = employeeTable.createRecords(cursor)
+		val recordList = userAssignTable.createRecords(cursor)
 		cursor.close()
 		return recordList
 	}

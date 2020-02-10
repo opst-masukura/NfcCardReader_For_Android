@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/navi_graph"
+		app:startDestination="@id/mainFragment">
+
+	<fragment
+			android:id="@+id/mainFragment"
+			android:name="jp.co.massu_p.nfccardreader.views.mainview.MainFragment"
+			android:label="fragment_main"
+			tools:layout="@layout/fragment_main" >
+		<action
+				android:id="@+id/toScanCard"
+				app:destination="@id/scanViewFragment"
+				app:enterAnim="@anim/nav_default_enter_anim"
+				app:exitAnim="@anim/nav_default_exit_anim" />
+	</fragment>
+	<fragment
+			android:id="@+id/scanViewFragment"
+			android:name="jp.co.massu_p.nfccardreader.views.cardscan.ScanViewFragment"
+			android:label="fragment_scan_view"
+			tools:layout="@layout/fragment_scan_view" >
+		<action
+				android:id="@+id/toScanConfirm"
+				app:destination="@id/confirmViewFragment" />
+		<argument
+				android:name="tag"
+				app:argType="android.nfc.Tag" />
+	</fragment>
+	<fragment
+			android:id="@+id/confirmViewFragment"
+			android:name="jp.co.massu_p.nfccardreader.views.scanconfirm.ConfirmViewFragment"
+			android:label="fragment_confirm_view"
+			tools:layout="@layout/fragment_confirm_view" />
+</navigation>

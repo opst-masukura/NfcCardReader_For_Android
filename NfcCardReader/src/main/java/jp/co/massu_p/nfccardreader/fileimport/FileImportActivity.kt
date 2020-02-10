@@ -10,7 +10,7 @@ import android.os.Environment
 import jp.co.massu_p.nfccardreader.R
 import java.io.File
 
-class FileImportActivity : AppCompatActivity(), FileListFragment.OnClickItemListener {
+class FileImportActivity : AppCompatActivity(), FileImportFragment.OnClickItemListener {
 
 	companion object {
 		fun intent(context: Context): Intent =
@@ -23,30 +23,27 @@ class FileImportActivity : AppCompatActivity(), FileListFragment.OnClickItemList
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_file_import)
 
-		currentFile = File(Environment.getExternalStorageDirectory().path)
-
 		if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 			if (savedInstanceState == null) {
 				val transaction = supportFragmentManager.beginTransaction()
-				transaction.add(R.id.view_container, FileListFragment.newInstance(currentFile))
+				transaction.add(R.id.view_container, FileImportFragment.newInstance(currentFile))
 				transaction.commit()
 			}
 		} else {
 			requestPermissions(
-				arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1
+				arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+				1
 			)
 		}
-
-
 	}
 
 	override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
 		when (requestCode) {
 			1 -> {
 				if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-					// 許可の場合。実装は後で。
+					currentFile = File(Environment.getExternalStorageDirectory().path)
 				} else {
-					// 不許可の場合。実装は後で。
+					finish()
 				}
 			}
 		}
@@ -64,7 +61,7 @@ class FileImportActivity : AppCompatActivity(), FileListFragment.OnClickItemList
 		}
 		if (file.isDirectory) {
 			val transaction = supportFragmentManager.beginTransaction()
-			transaction.replace(R.id.view_container, FileListFragment.newInstance(file))
+			transaction.replace(R.id.view_container, FileImportFragment.newInstance(file))
 			transaction.commit()
 		}
 	}

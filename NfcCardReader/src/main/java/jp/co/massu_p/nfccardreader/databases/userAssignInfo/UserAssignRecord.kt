@@ -1,4 +1,4 @@
-package jp.co.massu_p.nfccardreader.databases.employeeInfo
+package jp.co.massu_p.nfccardreader.databases.userAssignInfo
 
 import android.database.Cursor
 import android.os.Parcelable
@@ -9,37 +9,37 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 /**
- * 社員情報レコードの定義
+ * ユーザー割り当て情報レコードの定義
  *
  * ## 概要
  * 以下のカラムが存在している
  * - tagId NFCタグ（主キー）
  * - cardId カードに記載されている番号
- * - employeeId 社員番号
- * - employeeName 社員名
+ * - employeeId ユーザー番号
+ * - employeeName ユーザー名
  *
  */
 @Parcelize
-class EmployeeRecord() : DbRecord(), Parcelable {
+class UserAssignRecord() : DbRecord(), Parcelable {
 
 	constructor(cursor: Cursor) : this() {
 		tagId = cursor.getString(cursor.getColumnIndex(COLUMN.TAG_ID.columnName))
 		cardId = cursor.getString(cursor.getColumnIndex(COLUMN.CARD_ID.columnName))
-		employeeId = cursor.getString(cursor.getColumnIndex(COLUMN.EMPLOYEE_ID.columnName))
-		employeeName = cursor.getString(cursor.getColumnIndex(COLUMN.EMPLOYEE_NAME.columnName))
+		userId = cursor.getString(cursor.getColumnIndex(COLUMN.USER_ID.columnName))
+		userName = cursor.getString(cursor.getColumnIndex(COLUMN.USER_NAME.columnName))
 	}
 
 	override fun initializer(): MutableList<DbColumn> {
 		val columnList = mutableListOf<DbColumn>()
 		columnList.add(DbColumn(COLUMN.TAG_ID.columnName, DbColumn.ValueType.TEXT, true, false, false))
 		columnList.add(DbColumn(COLUMN.CARD_ID.columnName, DbColumn.ValueType.TEXT, false, false, false))
-		columnList.add(DbColumn(COLUMN.EMPLOYEE_ID.columnName, DbColumn.ValueType.TEXT, false, false, false))
-		columnList.add(DbColumn(COLUMN.EMPLOYEE_NAME.columnName, DbColumn.ValueType.TEXT, false, false, false))
+		columnList.add(DbColumn(COLUMN.USER_ID.columnName, DbColumn.ValueType.TEXT, false, false, false))
+		columnList.add(DbColumn(COLUMN.USER_NAME.columnName, DbColumn.ValueType.TEXT, false, false, false))
 		return columnList
 	}
 
-	override fun createNewInstance(cursor: Cursor): EmployeeRecord {
-		return EmployeeRecord(cursor)
+	override fun createNewInstance(cursor: Cursor): UserAssignRecord {
+		return UserAssignRecord(cursor)
 	}
 
 	override fun getColumnSize(): Int {
@@ -57,8 +57,8 @@ class EmployeeRecord() : DbRecord(), Parcelable {
 	enum class COLUMN(val columnName: String) {
 		TAG_ID("tagId"), // カードのタグID
 		CARD_ID("cardId"), // カード表面のID
-		EMPLOYEE_ID("employeeId"), // 社員番号
-		EMPLOYEE_NAME("employeeName") // 社員名
+		USER_ID("userId"), // ユーザー番号
+		USER_NAME("userName") // ユーザー名
 	}
 
 	@IgnoredOnParcel
@@ -76,17 +76,17 @@ class EmployeeRecord() : DbRecord(), Parcelable {
 		}
 
 	@IgnoredOnParcel
-	var employeeId: String = ""
+	var userId: String = ""
 		set(value) {
 			field = value.toLowerCase(Locale.ROOT)
-			updateColumn(COLUMN.EMPLOYEE_ID.columnName, field)
+			updateColumn(COLUMN.USER_ID.columnName, field)
 		}
 
 	@IgnoredOnParcel
-	var employeeName: String = ""
+	var userName: String = ""
 		set(value) {
 			field = value
-			updateColumn(COLUMN.EMPLOYEE_NAME.columnName, field)
+			updateColumn(COLUMN.USER_NAME.columnName, field)
 		}
 
 }

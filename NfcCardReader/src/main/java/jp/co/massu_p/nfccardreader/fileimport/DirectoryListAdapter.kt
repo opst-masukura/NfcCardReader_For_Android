@@ -50,7 +50,7 @@ class DirectoryListAdapter(
 			} else {
 				it.itemImage.setImageResource(R.drawable.outline_insert_drive_file_black_48)
 			}
-			it.itemName.setText(item.name)
+			it.itemName.text = item.name
 		}
 	}
 }

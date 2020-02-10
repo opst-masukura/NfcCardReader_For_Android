@@ -76,12 +76,14 @@
 				android:id="@+id/text_employee_name"
 				android:inputType="textPersonName"
 				android:hint="@string/hint_employee_name"/>
+
 		<Button
+				android:id="@+id/button_confirm_ok"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:id="@+id/button_confirm_ok"
-				android:text="@android:string/ok"
-				android:layout_marginTop="8dp"/>
+				android:layout_marginTop="8dp"
+				android:enabled="false"
+				android:text="@android:string/ok" />
 	</LinearLayout>
 
 </ScrollView>

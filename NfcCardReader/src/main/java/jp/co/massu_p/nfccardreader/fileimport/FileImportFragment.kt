@@ -14,7 +14,7 @@ import jp.co.massu_p.nfccardreader.R
 
 import java.io.File
 
-class FileListFragment : Fragment(), DirectoryListViewHolder.OnItemClickListener {
+class FileImportFragment : Fragment(), DirectoryListViewHolder.OnItemClickListener {
 
 	private val rootPath = File(Environment.getExternalStorageDirectory().path).path
 
@@ -89,7 +89,7 @@ class FileListFragment : Fragment(), DirectoryListViewHolder.OnItemClickListener
 		private val FILE_EXTRA = "FILE_EXTRA"
 
 		@JvmStatic
-		fun newInstance(file: File) = FileListFragment().apply {
+		fun newInstance(file: File) = FileImportFragment().apply {
 			arguments = Bundle().apply {
 				putSerializable(FILE_EXTRA, file)
 			}

@@ -6,26 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 import jp.co.massu_p.nfccardreader.R
 
 /**
+ * メイン画面
  */
 class MainFragment : Fragment() {
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-	}
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View? {
-		return inflater.inflate(R.layout.fragment_main, container, false)
-	}
-
-	companion object {
-		@JvmStatic
-		fun newInstance() = MainFragment()
+		val mainView = inflater.inflate(R.layout.fragment_main, container, false)
+		mainView.findViewById<Button>(R.id.btn_scan_start).setOnClickListener{
+			findNavController().navigate(R.id.toScanCard)
+		}
+		return mainView
 	}
 }

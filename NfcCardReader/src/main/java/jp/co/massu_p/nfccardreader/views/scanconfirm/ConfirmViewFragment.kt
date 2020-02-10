@@ -1,33 +1,40 @@
 package jp.co.massu_p.nfccardreader.views.scanconfirm
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 
 import jp.co.massu_p.nfccardreader.R
-import jp.co.massu_p.nfccardreader.databases.employeeInfo.EmployeeRecord
+import jp.co.massu_p.nfccardreader.databases.userAssignInfo.UserAssignRecord
+import jp.co.massu_p.nfccardreader.models.UserAssignDataModel
 import kotlinx.android.synthetic.main.fragment_confirm_view.*
 
 /**
- * カードIDの確認を行う画面
+ * スキャン結果確認画面
  *
  * ## 概要
  *
- * 社員情報の表示と修正を行う画面。
+ * スキャン結果から社員情報の確認、修正、保存を行う。
  *
  * ## 機能
  *
- * 1. カードIDの変更を行える。カードIDは英数字を受け付ける。小文字は大文字に変換され保存される。
- * 1. 社員番号の変更を行える。社員番号は英数字を受け付ける。大文字は小文字に変換され保存される。
- * 1. 社員名の変更を行える。
+ * ### 画面表示
+ *
+ * DBに一致するTagIdのレコードが存在していればその情報を表示する。
+ *
+ * 存在していなければ、TagIdとCardIdを同じものとして表示する。
+ *
+ * ### OKボタンタップ時
+ *
+ * 入力されたレコードをDBに保存する。
+ * TagId以外が未入力でも許容する。
  *
  */
 class ConfirmViewFragment : Fragment() {
-
-	private var listener: OnFragmentInteractionListener? = null
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -38,51 +45,28 @@ class ConfirmViewFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+		val model = ViewModelProviders.of(this)[UserAssignDataModel::class.java]
 
 		arguments?.let {
-			val record = it.getParcelable<EmployeeRecord>(RECORD_EXTRA)
+			val record = it.getParcelable<UserAssignRecord>(RECORD_EXTRA)
 			if (null != record) {
 				text_tag_id.setText(record.tagId)
 				text_card_id.setText(record.cardId)
-				text_employee_id.setText(record.employeeId)
-				text_employee_name.setText(record.employeeName)
+				text_employee_id.setText(record.userId)
+				text_employee_name.setText(record.userName)
+				button_confirm_ok.isEnabled = true
 				button_confirm_ok.setOnClickListener {
 					record.cardId = text_card_id.text.toString()
-					record.employeeId = text_employee_id.text.toString()
-					record.employeeName = text_employee_name.text.toString()
-					if (listener != null) listener?.onConfirmOk(record)
+					record.userId = text_employee_id.text.toString()
+					record.userName = text_employee_name.text.toString()
+					model.setRecord(record)
+					findNavController().popBackStack()
 				}
 			}
 		}
-	}
-
-	override fun onAttach(context: Context) {
-		super.onAttach(context)
-		if (context is OnFragmentInteractionListener) {
-			listener = context
-		} else {
-			throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-		}
-	}
-
-	override fun onDetach() {
-		super.onDetach()
-		listener = null
-	}
-
-	interface OnFragmentInteractionListener {
-		fun onConfirmOk(record: EmployeeRecord)
 	}
 
 	companion object {
-		private val RECORD_EXTRA = "RECORD_EXTRA"
-
-		@JvmStatic
-		fun newInstance(record: EmployeeRecord) =
-			ConfirmViewFragment().apply {
-				arguments = Bundle().apply {
-					putParcelable(RECORD_EXTRA, record)
-				}
-			}
+		val RECORD_EXTRA = "RECORD_EXTRA"
 	}
 }

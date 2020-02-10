@@ -42,7 +42,7 @@
 				android:layout_marginLeft="8dp"
 				android:layout_marginRight="8dp"
 				app:layoutManager="LinearLayoutManager"
-				tools:context=".fileimport.FileListFragment"
+				tools:context=".fileimport.FileImportFragment"
 				tools:listitem="@layout/fragment_filelist">
 		</androidx.recyclerview.widget.RecyclerView>
 	</FrameLayout>
